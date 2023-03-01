@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+    cartService-mysql:
+      image: mysql:5.6
+      command: --max_allowed_packet=268435456
+      hostname: com.assessment.cartService-mysql
+      ports:
+        - 3306:3306
+      volumes:
+        - ~/docker-data/com.assessment.cartService-mysql:/var/lib/mysql
+        - ./mysql:/docker-entrypoint-initdb.d/:ro
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
